@@ -1,0 +1,44 @@
+### General IO ###
+input:
+  baseFolder: "../data/real"
+
+output:
+  baseFolder: "../result"
+
+
+### Preprocessing ###
+preprocess:
+  qc: true
+  trim: false
+
+preprocess_tools:
+  qc: "fastqc"
+  trim: "cutadapt"
+  # 'cutadapt' | 'trimomatic'
+  threads: 4
+
+
+### Alignment ###
+alignment:
+  index: false
+  align: true
+
+alignment_tools:
+  aligner: "hisat2"
+  # 'hisat2' | 'bwa' | 'bowtie' | 'star'
+  refPrefix: "../data/ref/covid_ref"
+  threads: 4
+
+
+### Feature Count ###
+Feature_count: false
+tool: 'featureCount'
+# 'featureCount' | 'htseq-count'
+
+
+### Variant calling ###
+variant_calling: false
+varint_calling_tools:
+  vcaller: 'gatk'
+  # 'gatk' | 'freebayes' | 'lofreq'
+

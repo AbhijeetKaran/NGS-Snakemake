@@ -1,0 +1,36 @@
+import os
+import glob
+from snakemake.utils import min_version
+
+configfile: "config.yaml"
+
+#module for before trimming FASTQC
+module qc:
+    snakefile:
+        "../rules/qc.smk"
+    config: config
+use rule * from qc
+
+#module for trimming     #"needs to add smk for this"
+module trim:
+    snakefile:
+        "../rules/trim.smk"
+    config: config
+use rule * from trim
+
+# #module for after trimming FASTQC     #"needs to add smk for this"
+# module qc:
+#     snakefile:
+#         "../rules/qc.smk"
+#     config: config
+# use rule * from qc
+
+#module for alignment
+module alignment:
+    snakefile:
+        "../rules/align.smk"
+    config: config
+
+use rule * from alignment
+
+#module for 
