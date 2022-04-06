@@ -30,7 +30,10 @@ module alignment:
     snakefile:
         "../rules/align.smk"
     config: config
-
 use rule * from alignment
 
-#module for 
+module gatk:
+    snakefile:
+        "../rules/gatk_mutec2.smk"
+    config: config
+use rule * from gatk
